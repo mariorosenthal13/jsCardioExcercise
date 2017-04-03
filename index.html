@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Array Cardio</title>
+    <link rel="stylesheet" href="styles.css">
+    <script type="text/javascript">
+      const inventors = [
+        { first: 'Albert', last: 'Einstein', year: 1879, passed: 1955},
+        { first: 'Isaac', last: 'Newton', year: 1643, passed: 1727},
+        { first: 'Galileo', last: 'Galilei', year: 1540, passed: 1642},
+        { first: 'Marie', last: 'Curie', year: 1867, passed: 1934},
+        { first: 'Johannes', last: 'Kepler', year: 1571, passed: 1630},
+        { first: 'Nicolaus', last: 'Copernicus', year: 1473, passed: 1543},
+        { first: 'Max', last: 'Planck', year: 1858, passed: 1947}
+      ];
+      const people = [
+        'Brad Banegas','Corey Crocker', 'Blanca Bourne', 'Gerard Grasser',
+        'Shonda Stmarie', 'Cory Carver', 'Leann Lambros', 'Chieko Chartrand',
+        'Rosanne Rivera', 'Chun Carballo', 'Carlota Croslin', 'Marina Mckamie',
+        'Zelma Zell', 'Lorina Liberto', 'Flo Frison', 'Fatima Firestone',
+        'Patty Paek', 'Telma Terra', 'Sophie Stidham', 'Mellisa Marcella'
+      ];
+      //array.prototype filter
+      //filter inverntors who were born in the 1500s
+      const fifteen = inventors.filter(function(inventor){
+        if(inventor.year >= 1500 && inventor.year <= 1600){
+          return true;//we keep it!!!
+        }
+      });
+      console.table(fifteen);
+
+      //array.prototype map
+      //give us an array of the inventors first and last names
+      const fullNames = inventors.map(inventor => inventor.first + " " + inventor.last);
+      console.log(fullNames)
+
+      //array.prototype sort
+      //rreturn and array from oldest to yougest
+
+      const oldYoung = inventors.sort((a, b) => a.year > b.year? 1 : -1);
+      console.table(oldYoung)
+
+      //array.prototype.reduce()
+      //how many years did all inventors live
+      const totalYears = inventors.reduce((total, inventor) => {
+        return total + (inventor.passed - inventor.year);
+      }, 0);
+      console.log(totalYears);
+
+      //sort inventors by years lived
+      const oldest = inventors.sort(function(a,b){
+        const lastGuy = a.passed - a.year;
+        const nextGuy = b.passed - b.year;
+        return ( lastGuy > nextGuy ? -1 : 1);
+      })
+      console.table(oldest)
+      // Create a list with all the bouleards in parid that contain 'de'
+
+
+      //sort excercise
+      //sort the people alphabeticallly
+      const alpha = people.sort((lastOne, nextOne) => {
+       const[aLast, aFirst] = lastOne.split(" ");
+       const[bLast, bFirst] = nextOne.split(" ");
+       return aLast > bLast ? 1 : -1;
+      });
+      console.log(alpha);
+
+      //reduce excercise
+      //sort the people alphabeticallly
+      const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car' , 'van', 'bike', 'walk', 'car', 'van','car', 'truck']
+      const transportation = data.reduce(function(obj, item){
+        if(!obj[item]){
+          obj[item]=0;
+        }
+        obj[item]++;
+        return obj;
+      }, {})
+
+      console.log(transportation);
+
+
+
+
+
+    </script>
+  </head>
+  <body>
+
+  </body>
+</html>
